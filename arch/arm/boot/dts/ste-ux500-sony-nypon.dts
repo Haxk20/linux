@@ -1,0 +1,45 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/dts-v1/;
+
+#include "ste-db8500.dtsi"
+#include "ste-ab8505.dtsi"
+#include "ste-dbx5x0-pinctrl.dtsi"
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+/ {
+	model = "Sony Xperia P (nypon)";
+	compatible = "sony,nypon", "st-ericsson,u8500";
+
+	chosen {
+		bootargs = "console=ttyAMA2,115200n8 root=/dev/ram0 rw rootwait";
+		stdout-path = &serial2;
+	};
+
+	soc {
+
+		uart@80120000 {
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&u0_a_1_default>;
+			pinctrl-1 = <&u0_a_1_sleep>;
+			status = "okay";
+		};
+
+		/* This UART is unused and thus left disabled */
+		uart@80121000 {
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&u1rxtx_a_1_default>;
+			pinctrl-1 = <&u1rxtx_a_1_sleep>;
+			status = "okay";
+		};
+
+		uart@80007000 {
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&u2rxtx_c_1_default>;
+			pinctrl-1 = <&u2rxtx_c_1_sleep>;
+			status = "okay";
+		};
+	};
+
+};
