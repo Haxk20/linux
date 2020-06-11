@@ -12,6 +12,11 @@
 	model = "Sony Xperia P (nypon)";
 	compatible = "sony,nypon", "st-ericsson,u8500";
 
+	memory {
+		device_type = "memory";
+		reg = <0 0>;
+	};
+
 	chosen {
 		bootargs = "console=ttyAMA2,115200n8 root=/dev/ram0 rw rootwait";
 		stdout-path = &serial2;
