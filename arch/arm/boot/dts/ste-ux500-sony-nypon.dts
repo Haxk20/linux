@@ -1,13 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /dts-v1/;
 
-#include "ste-db8500.dtsi"
-#include "ste-ab8505.dtsi"
-#include "ste-dbx5x0-pinctrl.dtsi"
-#include <dt-bindings/gpio/gpio.h>
-#include <dt-bindings/input/input.h>
-#include <dt-bindings/interrupt-controller/irq.h>
-
 / {
 	model = "Sony Xperia P (nypon)";
 	compatible = "sony,nypon", "st-ericsson,u8500";
