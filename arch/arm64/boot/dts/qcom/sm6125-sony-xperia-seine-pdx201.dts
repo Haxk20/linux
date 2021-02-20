@@ -37,6 +37,11 @@
 		};
 	};
 
+	extcon_usb: extcon-usb {
+		compatible = "linux,extcon-usb-gpio";
+		id-gpio = <&tlmm 102 GPIO_ACTIVE_HIGH>;
+	};
+
 	gpio_keys {
 		status = "okay";
 		compatible = "gpio-keys";
@@ -56,6 +61,18 @@
 	};
 };
 
+&hsusb_phy1 {
+	status = "okay";
+};
+
 &tlmm {
 	gpio-reserved-ranges = <22 2>, <28 6>;
+};
+
+&usb3 {
+	status = "okay";
+};
+
+&usb3_dwc3 {
+	extcon = <&extcon_usb>;
 };
