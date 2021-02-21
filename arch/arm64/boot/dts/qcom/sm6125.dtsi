@@ -446,6 +446,46 @@
 			reg = <0x045f0000 0x7000>;
 		};
 
+		sdhc_1: sdhci@4744000 {
+			compatible = "qcom,sm6125-sdhci", "qcom,sdhci-msm-v5";
+			reg = <0x04744000 0x1000>, <0x04744000 0x1000>;
+			reg-names = "hc_mem", "core_mem";
+
+			interrupts = <GIC_SPI 348 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 352 IRQ_TYPE_LEVEL_HIGH>;
+			interrupt-names = "hc_irq", "pwr_irq";
+
+			clocks = <&gcc GCC_SDCC1_AHB_CLK>,
+				<&gcc GCC_SDCC1_APPS_CLK>,
+				<&xo_board>;
+			clock-names = "iface", "core", "xo";
+			bus-width = <8>;
+			non-removable;
+			status = "disabled";
+		};
+
+		sdhc_2: sdhci@4784000 {
+			compatible = "qcom,sm6125-sdhci", "qcom,sdhci-msm-v5";
+			reg = <0x04784000 0x1000>;
+			reg-names = "hc_mem";
+
+			interrupts = <GIC_SPI 350 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 353 IRQ_TYPE_LEVEL_HIGH>;
+			interrupt-names = "hc_irq", "pwr_irq";
+
+			clocks = <&gcc GCC_SDCC2_AHB_CLK>,
+				<&gcc GCC_SDCC2_APPS_CLK>,
+				<&xo_board>;
+			clock-names = "iface", "core", "xo";
+
+			pinctrl-0 = <&sdc2_state_on>;
+			pinctrl-1 = <&sdc2_state_off>;
+			pinctrl-names = "default", "sleep";
+
+			bus-width = <4>;
+			status = "disabled";
+		};
+
 		usb3: usb@4ef8800 {
 			compatible = "qcom,msm8996-dwc3", "qcom,dwc3";
 			reg = <0x04ef8800 0x400>;
