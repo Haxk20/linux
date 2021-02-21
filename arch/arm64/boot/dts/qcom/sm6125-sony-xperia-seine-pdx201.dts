@@ -65,6 +65,15 @@
 	status = "okay";
 };
 
+&sdhc_1 {
+	status = "okay";
+};
+
+&sdhc_2 {
+	cd-gpios = <&tlmm 98 0>;
+	status = "okay";
+};
+
 &tlmm {
 	gpio-reserved-ranges = <22 2>, <28 6>;
 };
